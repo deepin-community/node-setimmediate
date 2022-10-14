@@ -1,0 +1,62 @@
+node-setimmediate (1.0.5-6) unstable; urgency=medium
+
+  * Team upload
+  * Fix GitHub tags regex
+  * Replace libjs-mocha by mocha in suggested dependencies and fix related doc
+    links (Closes: #969611)
+
+ -- Yadd <yadd@debian.org>  Sat, 07 Aug 2021 07:28:56 +0200
+
+node-setimmediate (1.0.5-5) unstable; urgency=medium
+
+  * Team upload
+  * Bump debhelper compatibility level to 12
+  * Declare compliance with policy 4.4.0
+  * Add debian/gbp.conf
+  * Switch install to pkg-js-tools
+
+ -- Xavier Guimard <yadd@debian.org>  Sat, 03 Aug 2019 15:43:57 +0200
+
+node-setimmediate (1.0.5-4) unstable; urgency=medium
+
+  * Team upload
+  * Declare compliance with policy 4.3.0
+  * Add upstream/metadata
+  * Remove libjs-chai and libjs-mocha from build dependencies
+  * Switch tests to pkg-js-tools
+  * Clean d/control
+  * Use debian/clean
+
+ -- Xavier Guimard <yadd@debian.org>  Mon, 18 Feb 2019 18:59:29 +0100
+
+node-setimmediate (1.0.5-3) unstable; urgency=medium
+
+  * Team upload
+  * Ship browser example.
+
+ -- Bastien Roucariès <rouca@debian.org>  Tue, 25 Dec 2018 20:16:03 +0100
+
+node-setimmediate (1.0.5-2) unstable; urgency=medium
+
+  * Team upload
+  * Bump compat and policy (no changes)
+  * Move to section javascript
+  * Test package
+  * Move to salsa
+  * Import patches from pull request fixing some problems for webpack
+
+ -- Bastien Roucariès <rouca@debian.org>  Mon, 24 Dec 2018 22:29:26 +0100
+
+node-setimmediate (1.0.5-1) unstable; urgency=medium
+
+  * new upstream release
+  * new debian/watch
+  * debian/control: bump standard to 3.9.8 (no changes)
+
+ -- Thorsten Alteholz <debian@alteholz.de>  Sat, 05 Nov 2016 12:46:18 +0100
+
+node-setimmediate (1.0.4-1) unstable; urgency=medium
+
+  * Initial release
+
+ -- Thorsten Alteholz <debian@alteholz.de>  Fri, 19 Feb 2016 21:46:18 +0100

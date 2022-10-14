@@ -1,0 +1,33 @@
+Source: node-setimmediate
+Maintainer: Debian Javascript Maintainers <pkg-javascript-devel@lists.alioth.debian.org>
+Uploaders: Thorsten Alteholz <debian@alteholz.de>
+Section: javascript
+Testsuite: autopkgtest-pkg-nodejs
+Priority: optional
+Build-Depends: debhelper-compat (= 12),
+               dh-buildinfo,
+               nodejs,
+               mocha (>= 3) <!nocheck>,
+               pkg-js-tools (>= 0.8.8)
+Standards-Version: 4.4.0
+Vcs-Browser: https://salsa.debian.org/js-team/node-setimmediate
+Vcs-Git: https://salsa.debian.org/js-team/node-setimmediate.git
+Homepage: https://github.com/YuzuJS/setImmediate
+
+Package: node-setimmediate
+Architecture: all
+Depends: ${misc:Depends},
+         nodejs
+Suggests: mocha (>= 3),
+          chai
+Description: shim for the setImmediate efficient script yielding API
+ setImmediate.js is a highly cross-browser implementation of the
+ setImmediate and clearImmediate APIs, proposed by Microsoft to
+ the Web Performance Working Group.
+ .
+ setImmediate allows scripts to yield to the browser, executing a
+ given operation asynchronously, in a manner that is typically
+ more efficient and consumes less power than the usual
+ setTimeout(..., 0) pattern.
+ .
+ Node.js is an event-based server-side JavaScript engine.

@@ -1,0 +1,55 @@
+Subject: Port to newer mocha
+author: Bastien Roucariès <rouca@debian.org>
+forwarded: not-needed
+
+Port to newer mocha example
+
+
+Index: node-setimmediate/test/browserOnly/index.html
+===================================================================
+--- node-setimmediate.orig/test/browserOnly/index.html
++++ node-setimmediate/test/browserOnly/index.html
+@@ -8,9 +8,14 @@
+     <body>
+         <div id="mocha"></div>
+         <script src="mocha.js"></script>
++        <script src="chai.js"></script>
+         <script>mocha.setup({ ui: "bdd", slow: Infinity });</script>
+         <script src="setImmediate.js"></script>
+         <script src="tests.js"></script>
+-        <script>mocha.run();</script>
++        <script>
++              window.onload = function() {
++                 mocha.run()
++             };
++        </script>
+     </body>
+ </html>
+Index: node-setimmediate/test/browserOnly/tests.js
+===================================================================
+--- node-setimmediate.orig/test/browserOnly/tests.js
++++ node-setimmediate/test/browserOnly/tests.js
+@@ -1,4 +1,4 @@
+-"use strict";
++/*"use strict";*/
+ /*global setImmediate: false, specify: false, window: false */
+ 
+ function assert(condition) {
+@@ -12,7 +12,7 @@ assert.strictEqual = function (x, y) {
+     }
+ };
+ 
+-specify("Modal dialogs block handlers", function (done) {
++it("Modal dialogs block handlers", function (done) {
+     // Try to launch the less-annoying self-closing-window modal dialog; if that's not an option, fall back to alert.
+     var showTheDialog = window.showModalDialog ?
+         function () {
+@@ -35,7 +35,7 @@ specify("Modal dialogs block handlers",
+ });
+ 
+ if (typeof window.Worker === "function") {
+-    specify("When inside a web worker context, setImmediate calls the passed handler", function (done) {
++    it("When inside a web worker context, setImmediate calls the passed handler", function (done) {
+         var worker = new window.Worker("worker.js");
+         worker.addEventListener("message", function (event) {
+             assert.strictEqual(event.data, "TEST");

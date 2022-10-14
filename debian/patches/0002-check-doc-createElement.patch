@@ -1,0 +1,25 @@
+From: Vince Cooley <vince.r.cooley@gmail.com>
+Last-updated: Fri, 29 Dec 2017 10:59:46 -0500
+Subject: [PATCH] check that doc.createElement is defined
+origin: https://github.com/YuzuJS/setImmediate/pull/67
+
+In some implementation doc is defined but not doc.createElement. Fix it
+
+From 8b16b84230be679a14e832a0d6eee90f3ab3d660 Mon Sep 17 00:00:00 2001
+---
+ setImmediate.js | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setImmediate.js b/setImmediate.js
+index 3c1b06e..f2d897f 100644
+--- a/setImmediate.js
++++ b/setImmediate.js
+@@ -172,7 +172,7 @@
+         // For web workers, where supported
+         installMessageChannelImplementation();
+ 
+-    } else if (doc && "onreadystatechange" in doc.createElement("script")) {
++    } else if (doc && doc.createElement && "onreadystatechange" in doc.createElement("script")) {
+         // For IE 6–8
+         installReadyStateChangeImplementation();
+ 

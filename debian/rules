@@ -1,0 +1,32 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+%:
+	dh $@ --with nodejs
+
+override_dh_auto_build:
+ifeq (,$(filter nodoc,$(DEB_BUILD_OPTIONS) $(DEB_BUILD_PROFILES)))
+	# add compat link
+	ln -s /usr/share/nodejs/mocha/mocha.css test/browserOnly/mocha.css
+	ln -s /usr/share/nodejs/mocha/lib/mocha.js test/browserOnly/mocha.js
+	ln -s /usr/share/nodejs/chai/lib/chai.js test/browserOnly/chai.js
+	ln -s /usr/share/nodejs/setimmediate/setImmediate.js test/browserOnly/setImmediate.js
+else
+	@echo '**********************************************************'
+	@echo 'Skip building doc                                         '
+	@echo '**********************************************************'
+endif
+
+override_dh_installexamples:
+ifeq (,$(filter nodoc,$(DEB_BUILD_OPTIONS) $(DEB_BUILD_PROFILES)))
+	dh_installexamples
+	rm -f debian/node-setimmediate/usr/share/doc/node-setimmediate/examples/setImmediate.js
+	ln -s ../../../../share/nodejs/setimmediate/setImmediate.js debian/node-setimmediate/usr/share/doc/node-setimmediate/examples/setImmediate.js
+else
+	@echo '**********************************************************'
+	@echo 'Skip building doc                                         '
+	@echo '**********************************************************'
+endif

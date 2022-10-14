@@ -1,0 +1,4 @@
+0001-install-polyfill-if-clearimmediate-not-defined.patch
+0002-check-doc-createElement.patch
+0003-use-local-javascript-for-example.patch
+0004-port-to-newer-mocha.patch

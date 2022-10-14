@@ -1,0 +1,29 @@
+From: Rob Walch <rob@jwplayer.com>
+Last-update: Fri, 23 Mar 2018 11:36:53 -0400
+Subject: [PATCH] Install polyfill if clearImmediate is undefined
+origin: https://github.com/YuzuJS/setImmediate/pull/71
+
+Library have setImmediate polyfilled without clearImmediate. This breaks some embed library because
+it's compiled with webpack which depends on this module as a sub-dependency.
+
+Checking that both setImmediate and clearImmediate are defined before exiting ensures that the polyfill
+is always attached when needed.
+
+From f204888576839a98f4a9fc8b44ec8a81be2ec108 Mon Sep 17 00:00:00 2001
+---
+ setImmediate.js | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setImmediate.js b/setImmediate.js
+index 3c1b06e..a79bafc 100644
+--- a/setImmediate.js
++++ b/setImmediate.js
+@@ -1,7 +1,7 @@
+ (function (global, undefined) {
+     "use strict";
+ 
+-    if (global.setImmediate) {
++    if (global.setImmediate && global.clearImmediate) {
+         return;
+     }
+ 

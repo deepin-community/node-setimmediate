@@ -1,0 +1,39 @@
+From: Bastien Roucariès <rouca@debian.org>
+Subject: Use local doc for test
+Forwarded: not-needed
+
+Use local link for test, instead of node_modules
+
+Index: node-setimmediate/test/browserOnly/index.html
+===================================================================
+--- node-setimmediate.orig/test/browserOnly/index.html
++++ node-setimmediate/test/browserOnly/index.html
+@@ -3,14 +3,14 @@
+     <head>
+         <meta charset="utf-8" />
+         <title>Real-Browser Only setImmediate Tests</title>
+-        <link rel="stylesheet" href="../../node_modules/mocha/mocha.css" />
++        <link rel="stylesheet" href="mocha.css" />
+     </head>
+     <body>
+         <div id="mocha"></div>
+-        <script src="../../node_modules/mocha/mocha.js"></script>
++        <script src="mocha.js"></script>
+         <script>mocha.setup({ ui: "bdd", slow: Infinity });</script>
+-        <script src="../../setImmediate.js"></script>
+-        <script src="./tests.js"></script>
++        <script src="setImmediate.js"></script>
++        <script src="tests.js"></script>
+         <script>mocha.run();</script>
+     </body>
+ </html>
+Index: node-setimmediate/test/browserOnly/worker.js
+===================================================================
+--- node-setimmediate.orig/test/browserOnly/worker.js
++++ node-setimmediate/test/browserOnly/worker.js
+@@ -1,4 +1,4 @@
+-importScripts("../../setImmediate.js");
++importScripts("setImmediate.js");
+ 
+ setImmediate(function () {
+ 	self.postMessage("TEST");
